@@ -2,7 +2,7 @@ package nl.flotsam.kmeans
 
 import org.specs2.mutable.Specification
 
-import EuclidianGeometry.g
+import EuclidianVectorSpace.g
 import KMeans._
 
 class KMeansSpec extends Specification {

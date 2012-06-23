@@ -4,7 +4,7 @@ import annotation.tailrec
 
 object KMeans {
 
-  def cluster[T,U](xs: Seq[T], k: Int)(implicit fn: T => U, g: Geometry[U]): Seq[Seq[T]] = {
+  def cluster[T,U](xs: Seq[T], k: Int)(implicit fn: T => U, g: VectorSpace[U]): Seq[Seq[T]] = {
     case class Pair(original: T) {
       val projected = fn(original)
     }
@@ -31,7 +31,7 @@ object KMeans {
     groupedMappings.map(_.map(_.original))
   }
 
-  def cluster[T,U](fn: T => U)(xs: Seq[T], k: Int)(implicit g: Geometry[U]): Seq[Seq[T]] =
+  def cluster[T,U](fn: T => U)(xs: Seq[T], k: Int)(implicit g: VectorSpace[U]): Seq[Seq[T]] =
     cluster(xs, k)(fn, g)
 
 }

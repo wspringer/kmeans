@@ -2,11 +2,11 @@ package nl.flotsam.kmeans
 
 import math._
 
-object EuclidianGeometry {
+object EuclidianVectorSpace {
 
   type Point = (Double, Double)
 
-  implicit def g = new Geometry[Point] {
+  implicit def g = new VectorSpace[Point] {
     def distance(x: Point, y: Point): Double =
       sqrt(pow(x._1 - y._1, 2) + pow(x._2 - y._2, 2))
 
