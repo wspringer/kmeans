@@ -24,7 +24,12 @@ object KMeans {
         case (`centroid`, x) => x
       })
       val replacements = grouped.map(group => space.centroid(group.map(_.projected)))
-      if (replacements.forall(replacement => centroids.exists(centroid => centroid == replacement))) {
+      val stable =
+        replacements.forall {
+          replacement =>
+            centroids.exists(centroid => centroid == replacement)
+        }
+      if (stable) {
         grouped
       } else {
         step(xs, replacements)
