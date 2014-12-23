@@ -5,7 +5,7 @@ import util.Random
 
 object KMeans {
 
-  def pickRandom[T](xs: Seq[T], k: Int) = Random.shuffle(xs).take(k)
+  def pickRandom[T](xs: Seq[T], k: Int) = Random.shuffle(xs).take(k).distinct
 
   def cluster[T,U](xs: Seq[T], k: Int)
                   (implicit projection: T => U, space: VectorSpace[U]): Seq[Seq[T]] = {
